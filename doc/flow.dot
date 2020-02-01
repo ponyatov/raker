@@ -1,0 +1,19 @@
+digraph flow {
+    rankdir=LR
+    c [label=".c"]
+    cpp [label=".cc"]
+    c -> clexer -> cparser -> cpprules 
+    cpprules -> meta 
+    meta -> mlexer [label="metaL"]
+    mlexer -> mparser -> mrules -> cgen -> cpp
+    cpprules [label="c++rules"]
+    cpp -> clexer
+    meta [label=".m"]
+    { rank=same; cparser; mlexer; }
+    { rank=same; mparser; clexer; cgen }
+    { rank=same; c;cpp; }
+    { rank=same; cpprules; meta; }
+    { rank=same; target; mrules; }
+    target -> cpprules
+    target -> mrules
+}
