@@ -25,7 +25,9 @@ all: ./$(MODULE)
 
 .PHONY: merge release zip
 
-MERGE = Makefile README.md doxy.gen doc *.ml* *.m
+MERGE  = Makefile README.md doxy.gen doc
+MERGE += raker.ml m.lexer.mll m.parser.mly
+MERGE += raker.m metaL.m vscode.m make.m
 
 merge:
 	git checkout master
